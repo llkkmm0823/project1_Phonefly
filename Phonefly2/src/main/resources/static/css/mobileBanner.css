@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/**
+ * author : BHS
+ */
+
+
+
+
+/* Main Banner */
+
+.mobile-movie-object {
+/* 	width: 1470px; */
+	width: 120%;
+	transform: translate(0%,-10%);
+	z-index: 5;
+}
+
+.wrap-mobile-banner {
+	position: relative;
+	width: 98%;
+	aspect-ratio: 5 / 3;
+	border-radius: 18px;
+	box-shadow: 2px 4px 12px rgba(0,0,0,.2);
+	overflow: hidden;
+}
+
+.mobile-banner {
+	position: relative;
+	width: 100%;
+}
+
+.mobile-banner h1,
+.mobile-banner p,
+.sub-banner h1,
+.sub-banner p {
+	color: white;
+	text-shadow: 1px 1px 5px rgba(0,0,0,.5), -1px -1px 5px rgba(0,0,0,.5), 1px -1px 5px rgba(0,0,0,.5), -1px 1px 5px rgba(0,0,0,.5);
+}
+
+.mobile-banner li {
+	position: relative;
+	float: left;
+}
+
+#banner_text1,
+#banner_text2,
+#banner_text3,
+#banner_text4 {
+	position: absolute;
+	color: white;
+	text-align: left;
+	z-index: 10;
+}
+
+#banner_text1,
+#banner_text2 {
+	top: -50px;
+	left: 15px;
+}
+
+#banner_text3,
+#banner_text4 {
+	top: -30px;
+	left:900px;
+}
+#banner_text4 h1 {
+	color: white;
+}
+
+
+#banner_btns {
+	position: absolute;
+	top: 420px;
+	left:50px;
+	font-family: sans-serif;
+	color: white;
+	z-index: 10;
+}
+
+#banner_btns li {
+	float: left;
+	width: 20px;
+	height: 20px;
+	font-size: 18px;
+	padding: 5px;
+	cursor:pointer;
+}
+
+.mobile-banner .txt_1 {
+	font-size: 24px;
+}
+
+
+.mobile-logo {
+	width: 30%;
+}

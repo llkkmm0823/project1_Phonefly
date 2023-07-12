@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ezen.phonefly2.dao.ICommonDao">
+
+	<select id="getNoticeList" resultType="com.ezen.phonefly2.dto.NoticeVO">
+		select * from ( 
+		select * from(
+			select rownum as rn, n.* from 
+			((select * from notice where subject like '%'||#{param2}||'%' order by nseq desc) n )
+		) where rn &gt;= #{param1.startNum} 
+		) where rn &lt;= #{param1.endNum} 
+	</select>
+
+	<select id="getNotice" resultType="com.ezen.phonefly2.dto.NoticeVO">
+		SELECT * FROM notice where nseq=#{param1}
+	</select>
+	
+	<select id="getAllCount"  resultType="int">
+		select count(*) from  ${param1}   where   ${param2}   like  '%'||#{param3}||'%'
+	</select>
+	
+	<select id="getEventList" resultType="com.ezen.phonefly2.dto.EventVO">
+		select * from ( 
+		select * from(
+			select rownum as rn, e.* from 
+			((select * from event where subject like '%'||#{param2}||'%' order by eseq desc) e )
+		) where rn &gt;= #{param1.startNum} 
+		) where rn &lt;= #{param1.endNum}
+	</select>
+	
+	<select id="getEvent" resultType="com.ezen.phonefly2.dto.EventVO">
+		SELECT * FROM event where eseq=#{param1}
+	</select>
+	
+	<select id="getAllCountById"  resultType="int">
+		select count(*) from  ${param1}   where   ${param2}   like  '%'||#{param3}||'%' and id=#{param4}
+	</select>
+	
+</mapper>

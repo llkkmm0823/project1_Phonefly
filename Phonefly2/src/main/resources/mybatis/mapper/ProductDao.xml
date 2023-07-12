@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezen.phonefly2.dao.IProductDao">
+
+	<select id="getProduct" resultType="com.ezen.phonefly2.dto.ProductVO">
+		SELECT * FROM product WHERE pseq=#{param1}
+	</select>
+	
+	<select id="getMfcList" resultType="com.ezen.phonefly2.dto.ProductVO">
+		SELECT * FROM product WHERE mfc=#{param1}
+	</select>
+
+	<select id="getRplanList" resultType="com.ezen.phonefly2.dto.RplanVO">
+		SELECT * FROM rplan ORDER BY mseq, rseq
+	</select>
+	
+	<select id="countProductOrders" resultType="int">
+		SELECT COUNT(*) cnt FROM order_detail WHERE pseq = #{param1}
+	</select>
+	
+	<select id="countOrderById" resultType="int">
+		SELECT COUNT(*) cnt FROM order_detail WHERE id = #{param1} AND pseq = #{param2}
+	</select>
+	
+	<select id="getReviews" resultType="com.ezen.phonefly2.dto.ReviewVO">
+		SELECT * FROM review_view WHERE pseq =  #{param1} ORDER BY rvseq DESC
+	</select>
+	
+</mapper>

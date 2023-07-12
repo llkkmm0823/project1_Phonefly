@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/**
+ * author : BHS
+ */
+
+
+
+
+/* Main Banner */
+
+.movie_object {
+	width: 1470px;
+	transform: translate(0%,-10%);
+	z-index: 5;
+}
+
+.wrap_main_banner {
+	position: relative;
+	width: 1470px;
+	border-radius: 18px;
+	box-shadow: 2px 4px 12px rgba(0,0,0,.2);
+	overflow: hidden;
+}
+
+.main_banner {
+	position: relative;
+	width: 4410px;
+}
+
+.main_banner h1,
+.main_banner p,
+.sub-banner h1,
+.sub-banner p {
+	color: white;
+	text-shadow: 1px 1px 5px rgba(0,0,0,.5), -1px -1px 5px rgba(0,0,0,.5), 1px -1px 5px rgba(0,0,0,.5), -1px 1px 5px rgba(0,0,0,.5);
+}
+
+.main_banner li {
+	position: relative;
+	width: 1470px;
+	height: 500px;
+	float: left;
+}
+
+#banner_text1,
+#banner_text2,
+#banner_text3,
+#banner_text4 {
+	position: absolute;
+	color: white;
+	text-align: left;
+	z-index: 10;
+}
+
+#banner_text1,
+#banner_text2 {
+	top: 20px;
+	left:50px;
+}
+
+#banner_text3,
+#banner_text4 {
+	top: -30px;
+	left:900px;
+}
+#banner_text4 h1 {
+	color: white;
+}
+
+
+#banner_btns {
+	position: absolute;
+	top: 420px;
+	left:50px;
+	font-family: sans-serif;
+	color: white;
+	z-index: 10;
+}
+
+#banner_btns li {
+	float: left;
+	width: 20px;
+	height: 20px;
+	font-size: 18px;
+	padding: 5px;
+	cursor:pointer;
+}
+
+#main_banner .txt_1 {
+	font-size: 24px;
+}

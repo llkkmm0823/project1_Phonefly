@@ -1,0 +1,583 @@
+@charset "UTF-8";
+/**
+ * author : BHS
+ */
+
+
+
+
+/* Common */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html {
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: 'Noto Sans CJK KR', 'Noto Sans KR', sans-serif;
+}
+
+body {
+	margin: 0px;
+	border: 0px;
+	background-color: #F5F5F7;
+	color: rgb(29, 29, 31);
+}
+
+/*
+table {
+	border-collapse: collapse;
+}
+
+div,
+table,
+tr,
+td,
+fieldset,
+input {
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+*/
+
+h2 {
+	font-weight: bold;
+}
+/*
+a,
+a:hover,
+a:visited,
+a:hover,
+a:active {
+	color: black;
+	text-decoration: none;
+}
+*/
+/* a:link 방문 전 링크
+a:visited 방문했던 링크
+a:hover 커서가 링크위에 있을 때
+a:active 클릭시 */
+
+.form-floating > label {
+	z-index: 1000;
+}
+
+ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+#logo {
+	width: 330px;
+	height: 140px;
+	background-color: gray;
+	float: left;
+}
+
+.wrap {
+	width: 1470px;
+	margin: 0px auto;
+}
+.flex-wrap {
+	display: flex;
+}
+
+.display-none {
+	display: none !important;
+}
+.visibility-hidden,
+.blind {
+	visibility: hidden !important;
+}
+
+.clear {
+	clear: both;
+}
+
+.cs-p {
+	cursor: pointer !important;
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s ease-in-out 0s;
+	-webkit-transition: background-color 9999s ease-out;
+	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.input-text {
+	display: inline-block;
+	font-size: 1.05em;
+	color: black;
+	border-bottom: 1px solid black;
+	vertical-align: middle;
+}
+.input-text-bg-gray {
+	-webkit-box-shadow: 0 0 0px 1000px #F5F5F7 inset !important;
+}
+.input-text-font-normal {
+	font-size: 1em;
+}
+
+input::placeholder,
+textarea::placeholder {
+	color: #bbb;
+	font-size: 17px;
+	opacity: 1;
+}
+
+
+
+.submit {
+	display: inline-block;
+	width: 110px;
+	height: 45px;
+	line-height: 45px;
+	border-radius: 22px;
+	font-size: 1em;
+	font-weight: bold;
+	letter-spacing: -0.01em;
+	color: #eee;
+	background-color: #333;
+}
+.submit-blue {
+	color: white;
+	background-color: RoyalBlue !important;
+}
+.cancel {
+	display: inline-block;
+	width: 110px;
+	height: 45px;
+	border-radius: 22px;
+	font-size: 1em;
+	font-weight: bold;
+	letter-spacing: -0.01em;
+	color: #eee;
+	background-color: #888;
+}
+.dup-btn {
+	display: inline-block;
+	width: 100px;
+	height: 34px;
+	line-height: 34px;
+	border-radius: 16px;
+	background-color: #555;
+}
+
+
+.cntr-i {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.cntr-ii {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.rb-color {
+	color: RoyalBlue !important;
+}
+.rb-bgcolor {
+	background-color: RoyalBlue !important;
+}
+.txt-al-l {
+	text-align: left !important;
+}
+.txt-al-r {
+	text-align: right !important;
+}
+.txt-al-m {
+	text-align: middle !important;
+}
+.float-l {
+	float: left !important;
+}
+.float-r {
+	float: right;
+}
+
+.abs {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+textarea {
+	font-family: 'Noto Sans CJK KR', 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	resize: none;
+}
+
+
+/* 
+p,
+span,
+div,
+h1,
+h2,
+h3 {
+	transform: rotate(-0.01deg);
+}
+
+ */
+
+
+/* 맨 위로 돌아가기 */
+#go_top {
+	display: none;
+	position: fixed;
+	right: 30px;
+	bottom: 50px;
+	outline: 0px;
+	border: 0px;
+	background: transparent;
+	cursor: pointer;
+	z-index: 9999;
+	color: #3F51B5;
+}
+/* //맨 위로 돌아가기 */
+
+
+
+
+
+
+/* 레이어 팝업 */
+/* class="layer-popup show" */
+.layer-popup {
+  display: none;
+  position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.layer-popup.show {
+  display: block;
+}
+/* // 레이어 팝업 */
+
+
+
+
+
+
+
+
+
+/* index main */
+
+article h1 {
+	font-size: 1.6em;
+	font-weight: 600;
+	letter-spacing: -0.007em;
+	color: #1d1d1f;
+	margin: 76px 0px 30px;
+}
+
+article h3 {
+	font-size: 1.40em;
+	font-weight: 600;
+	letter-spacing: -0.007em;
+	color: #1d1d1f;
+}
+
+
+
+
+
+/* 아이템 박스 (card) - position & effect */
+
+.card {
+	display: inline-block;
+	background-color: WHITE;
+	border-radius: 18px;
+	text-align: center;
+	box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+	transition: all .3s cubic-bezier(0,0,.5,1);
+	border: 0px;
+}
+
+.card-normal {
+	background-color: WHITE;
+	border-radius: 18px;
+	text-align: center;
+	box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+}
+
+
+.card:hover {
+	box-shadow: 2px 4px 12px rgba(0,0,0,.2);
+/* 	transform: scale(1.005); */
+	transform: scale(1.007);
+}
+
+#main-card-box .card {
+	display: inline-block;
+	width: 352px;
+	height: 564px;
+	margin: 0px auto;
+	/* float: left; */
+}
+
+
+
+
+/* 아이템 박스 안쪽 - position & effect */
+/* img */
+/* #main-card-box */ 
+.card-img {
+	position: relative;
+	width: 352px;
+	height: 310px;
+	line-height: 310px;
+	text-align: center;
+	margin: 0px auto;
+}
+
+/* #main-card-box */ 
+.card-img li {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+} 
+
+/* #main-card-box */ 
+.card-img img {
+	height: 310px;
+	vertical-align: middle;
+}
+
+/* color buttons */
+/* #main-card-box */ 
+.card-color-buttons {
+	display: inline-block;
+	margin: 0px auto;
+}
+/* #main-card-box */ 
+.card-color-buttons li {
+	margin: 0px 5px;
+	float: left;
+}
+/* #main-card-box */ 
+.color-button {
+	width: 13px;
+	height: 13px;
+	border: 1px solid black;
+	border-radius: 50%;
+	cursor: pointer;
+}
+/* #main-card-box */ 
+.color-button-selector {
+	position: relative;
+	top: -4px;
+	left: -4px;
+	width: 19px;
+	height: 19px;
+	border: 1px solid black;
+	border-radius: 50%;
+}
+
+/* color title */
+#main-card-box {
+	display: inline-box;
+	text-align: center;
+}
+#main-card-box .card-name {
+	margin-top: 26px;
+	letter-spacing: -0.05em;
+}
+
+/* price text */
+#main-card-box .card-price {
+	margin-top: 20px;
+}
+
+#main-card-box .card-price h3,
+#main-card-box .card-price h4 {
+	display: inline;
+}
+
+#main-card-box .card-price h3 {
+	margin-left: 14px;
+}
+
+#main-card-box .card-price h4 {
+	margin-left: 1px;
+}
+
+/* buy button */
+#main-card-box .card_buy {
+	color: white;
+	background-color: #212425;
+	width: 276px;
+	height: 37px;
+	line-height: 37px;
+	border-radius: 20px;
+	margin: 16px auto 16px;
+	font-size: 1.1em;
+	font-weight: bold;
+	letter-spacing: -0.02em;
+	cursor: pointer;
+}
+
+/* item compare button */
+#main-card-box .card-compare-price,
+.card-compare-price {
+	font-size: 1em;
+	font-weight: bold;
+	letter-spacing: -0.1em;
+	line-height: 1.11em;
+	cursor: pointer;
+}
+#main-card-box .card-compare-price div,
+#main-card-box .card-compare-price span,
+.card-compare-price div,
+.card-compare-price span
+{
+	vertical-align: middle;
+}
+
+.card-compare-price.disabled {
+	pointer-events: none;
+}
+
+.plus-button {
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+}
+.plus-button.disabled {
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	color: #2189ff;
+}
+.plus-button:before {
+	content: '';
+	display: inline-block;
+	background: url(../images/common/iconPlus-default.svg) no-repeat center;
+	background-size: 100% auto;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	vertical-align: middle;
+}
+.plus-button.disabled:before {
+	content: '';
+	display: inline-block;
+	background: url(../images/common/iconPlus-active.svg) no-repeat center;
+	background-size: 100% auto;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	vertical-align: middle;
+}
+
+
+
+
+
+
+/* 메인화면 중단 애플 파트 */
+#main-apple {
+	margin-top: 50px;
+	margin-bottom: 30px;
+	font-size: 1.5em;
+	font-weight: bold;
+	letter-spacing: -0.05em;
+}
+
+#main-apple li {
+	position: relative;
+	float: left;
+}
+
+#main-apple #content1 {
+	width: 448px;
+	height: 504px;
+	background-color: orange;
+	overflow: hidden;
+	pointer-events: none;
+	box-shadow: 2px 4px 12px rgba(0,0,0,.3);
+}
+
+#main-apple #content2,
+#main-apple #content3 {
+	width: 98%;
+	height: 103%;
+	overflow: hidden;
+}
+
+#main-apple #content2 img,
+#main-apple #content3 img {
+	width: 100%;
+}
+
+
+#main-apple #content1 div,
+#main-apple #content2 div,
+#main-apple #content3 div {
+	position: absolute;
+	text-align: left;
+	z-index: 10;
+}
+
+#main-apple #content1 div {
+	color: white;
+	top: 56px;
+	left: 20px;
+}
+
+#main-apple #content1 div span {
+	color: #ddd;
+}
+
+#main-apple #content2 div,
+#main-apple #content3 div {
+	color: black;
+	top: 10px;
+}
+
+#main-apple #content2 span,
+#main-apple #content3 span {
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: -0.05em;
+	color: gray;
+	margin-bottom: 12px;
+}
+
+
+
+
+
+/* 회사소개 */
+.intro-inner-wrap {
+	text-align: left;
+}

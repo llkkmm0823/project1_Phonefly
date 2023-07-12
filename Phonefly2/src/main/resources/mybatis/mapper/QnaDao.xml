@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ezen.phonefly2.dao.IQnaDao">
+
+	<select id="qnaList" resultType="com.ezen.phonefly2.dto.QnaVO">
+		select * from ( 
+		select * from(
+			select rownum as rn, q.* from 
+			((select * from qna where subject like '%'||#{param2}||'%' and id = #{param3.id} order by qseq desc) q )
+		) where rn &gt;= #{param1.startNum} 
+		) where rn &lt;= #{param1.endNum} 
+	</select>
+
+	<select id="getQna" resultType="com.ezen.phonefly2.dto.QnaVO">
+		select * from qna where qseq=#{param1}
+	</select>	
+
+	<insert id="qnaWrite" parameterType="com.ezen.phonefly2.dto.QnaVO">
+		insert into qna (qseq, id, subject, content) 
+		values(qseq.nextVal, #{id}, #{subject}, #{content})
+	</insert>
+	
+	<update id="qnaUpdate" parameterType="com.ezen.phonefly2.dto.QnaVO" >
+		update qna set subject=#{subject}, content=#{content} where qseq=#{qseq}
+	</update>
+	
+	<delete id="qnaDelete" parameterType="com.ezen.phonefly2.dto.QnaVO" >
+		delete from qna where qseq=#{param1}
+	</delete>
+</mapper>
+    

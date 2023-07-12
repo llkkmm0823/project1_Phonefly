@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- author : bhs -->
+<mapper namespace="com.ezen.phonefly2.dao.IMainDao">
+
+	<select id="getBestList" resultType="com.ezen.phonefly2.dto.ProductVO">
+		SELECT * FROM main_best_pro_view
+	</select>
+
+	<select id="getEventList" resultType="com.ezen.phonefly2.dto.ProductVO">
+		SELECT * FROM main_event_pro_view
+	</select>
+
+	<select id="getColorList" resultType="com.ezen.phonefly2.dto.ColorVO">
+		SELECT * FROM color WHERE pseq = #{param1} ORDER BY cseq DESC
+	</select>
+
+</mapper>

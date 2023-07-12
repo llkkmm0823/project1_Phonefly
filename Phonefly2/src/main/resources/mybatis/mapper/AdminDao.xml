@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ezen.phonefly2.dao.IAdminDao">
+
+<select id="getPwd"  resultType="string">
+		select pwd from worker where id=#{param1}
+	</select>
+
+<select id="getAllCount" resultType="_int">
+     select count(*) from ${param1} where ${param2} like '%'||#{param3}||'%'
+ </select>
+  
+<select id="listProduct" resultType="com.ezen.phonefly2.dto.ProductVO">
+     select * from (
+     select * from (
+         select rownum as rn, p.* from
+         ((select * from product where name like '%'||#{param2}||'%' order by pseq desc) p)
+     ) where rn &gt; = #{param1.startNum}
+     ) where rn &lt; = #{param1.endNum}
+     
+  </select>
+
+
+  <select id="listMember" resultType="com.ezen.phonefly2.dto.MemberVO">
+     select * from (
+     select * from (
+         select rownum as rn, m.* from
+         ((select * from Member where name like '%'||#{param2}||'%' ) m)
+     ) where rn &gt; = #{param1.startNum}
+     ) where rn &lt; = #{param1.endNum}
+     
+  </select>
+
+
+
+  <select id="listQna" resultType="com.ezen.phonefly2.dto.QnaVO">
+     select * from(
+     select * from(
+         select rownum as rn, q.*from
+         ((select * from qna where subject like '%'||#{param2}||'%' order by qseq desc) q)
+     ) where rn &gt; = #{param1.startNum}
+     ) where rn &lt; = #{param1.endNum}
+     
+  </select>
+  
+  <select id="listOrder" resultType="com.ezen.phonefly2.dto.OrderDetailVO">
+        select * from(
+        select * from(
+         select rownum as rn, p.* from
+         ((select * from ORDER_DETAIL_VIEW2 where id like '%'||#{param2}||'%' order by odseq desc) p)
+         )where rn &gt;= #{param1.startNum}
+         )where rn &lt;= #{param1.endNum} 
+  </select> 
+  
+  <select id="listNotice" resultType="com.ezen.phonefly2.dto.NoticeVO">
+    SELECT *
+    FROM (
+        SELECT rownum as rn, n.*
+        FROM (
+            SELECT *
+            FROM notice
+            WHERE subject LIKE '%' || #{param2} || '%'
+            ORDER BY nseq DESC
+        ) n
+    ) 
+    WHERE rn &gt;= #{param1.startNum} AND rn &lt;= #{param1.endNum}
+</select>
+
+
+<select id="listEvent" resultType="com.ezen.phonefly2.dto.EventVO">
+    SELECT *
+    FROM (
+        SELECT rownum as rn, e.*
+        FROM (
+            SELECT *
+            FROM event
+            WHERE subject LIKE '%' || #{param2} || '%'
+            ORDER BY eseq DESC
+        ) e
+    ) 
+    WHERE rn &gt;= #{param1.startNum} AND rn &lt;= #{param1.endNum}
+</select>
+
+
+
+<select id="getBannerList" resultType="com.ezen.phonefly2.dto.BannerVO">
+		select * from banner order by order_seq
+	</select>
+	
+	<insert id="insertBanner" parameterType="com.ezen.phonefly2.dto.BannerVO">
+		insert into banner(bseq, subject, order_seq, useyn, image )
+		values( banner_seq.nextVal, #{subject}, #{order_seq}, #{useyn}, #{image} )
+	</insert>
+	
+	<update id="updateSeq" >
+		update banner set order_seq=#{param1}, useyn=#{param2} where bseq=#{param3}
+	</update>
+	
+	<delete id="deleteBanner" >
+		delete from banner where bseq=#{param1}
+	</delete>
+	
+	<update id="updateBanner" >
+		update banner set subject=#{param1}, order_seq=#{param2}, useyn=#{param3},image=#{param4} where bseq=#{param5}
+	</update>
+	
+</mapper>
