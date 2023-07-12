@@ -1,0 +1,87 @@
+[[[ 요금플랜 ]]]
+
+
+(x) 고정 : 처리 필요없음, hard coding (input type="hidden" 으로 넘겨 주기만 함)
+[] : 가져오는 parameter
+{} : 넘겨줘야할 parameter
+(0) : 최초 초기화
+
+
+최초 로딩 시 javascript 실행 => loadRplanPage();
+	1. 요금제 KT 1번 (전체 : 왼쪽필드)
+		1-1. (+)rplan-name : 요금제 이름
+		1-2. (+)rplan-charge : 요금제 금액
+	2. 시나리오에 맞추어 계산
+
+[{pseq}]
+[{id}]
+{cseq}
+
+* 왼쪽필드
+
+요금제							<< clickRplan(); >>
+rplan-name : 이름 [rplanVO.name]
+rplan-charge : 금액 [rplanVO.charge]
+rplan-dataplan : 데이터플랜 (5GB, 무제한 등) [rplanVO.dataplan]
+rplan-timeplan : 통화시간 (전체 유무선 무제한) [rplanVO.timeplan] -> x
+rplan-textplan : 문자제한 (전체 문자 무제한) [rplanVO.textplan] -> x
+
+-- 선택사항 (-)
+(-)사용중인 통신사 : rplan-comm-old (1: SKT, 2:KT, 3:LGT) -> g
+	0. 최초 KT
+	1. 기기변경, 통신사이동 판단 후 필드 변경 << clickOldComm(2); >>
+	2. 자체 pdd-box-selected class 변경 (comm-old-1, 2, 3으로 선택)
+(-)사용하실 통신사 : rplan-comm-new (상동) -> h
+	0. 최초 KT
+	1. 요금제 1번 시나리오 실행 << clickNewComm(2); >>
+	2. 기기변경, 통신사이동 판단 후 필드 변경
+	3. 자체 pdd-box-selected class 변경 (comm-new-1, 2, 3으로 선택)
+(-+)요금제 :											=> {rseq}
+	0. 최초 KT 1번 결제 내용
+	1. 사용하실 통신사 변경시
+		1-1. 통신사 첫번째 요금제로 변경
+	2. 클릭시
+		2-1. 팝업창 출력
+		2-2. 팝업창에서 내용 클릭시
+		2-3. 왼쪽필드 요금제 내용변경 (rplan-charge)
+			
+		2-4. 오른쪽필드 요금제 내용변경 (rplan-charge)  A+B
+		2-5. 재 계산
+			2-5-1. rplan-mmonth		=> B
+			2-5-2. rplan-mtotal		=> A+B
+(-)할인방법 : rplan-discount-method (0: 100000, 1: 200000) => {discount} (type 0 or 1)
+	1. 오른쪽 필드 on/off
+	2. 재 계산
+		2-1. rplan-dctotal -> rplan-dcmonth
+		2-2. rplan-mmonth
+		2-4. rplan-mtotal
+	3. 자체 pdd-box-selected class 변경 (discount-0, 1으로 선택) << clickDiscountMethod(0); >>
+
+(-)구매방법 : rplan-buy-type (0: 1, 1: 24, 2: 30, 3: 36) => {buyplan} (1, 24, 30, 36)
+	1. 오른쪽 필드 내용변경 : rplan-buy-type-dest
+	2. 재 계산
+		2-1. rplan-dcmonth
+		2-2. rplan-mtotal
+	3. 자체 pdd-box-selected class 변경 (buy-type-1, 2, 3, 4로 선택) << clickBuyType(24); >>
+
+
+++ 선택사항을 선택하면 변동될 tag class들 (+)
+(+)기기변경, 통신사이동 : rplan-comm-cc (g == h: 기기변경(1), g != h: 통신사이동(0)) => {cc} (0, 1)
+	0. 최초 기기변경
+
+
+
+* 오른쪽필드	=> 각 click 함수처리 후 전체 순차적 계산 및 innnerText변경 << reRplanCalc(); >>
+(+)rplan-buy-type-dest : 개월 (월 할부금) -> i
+(0)rplan-price : 제품 출고가 (productVO : price2) -> a
+(+)rplan-discount : 공시지원 할인, 고정, on/off (0 : 500000) -> b => {discount} x 왼쪽필드에서 처리
+(calc)rplan-dctotal : 할부원금 ( a - b ) -> c => {dctotal}
+(calc)rplan-dcmonth : 월 할부금 ( c / i ) -> A => {dcmonth}
+
+(+)rplan-name : 요금제 이름 (왼쪽필드 중복) -> 동시작업
+(+)rplan-charge : 요금제 금액 (왼쪽필드 중복) -> 동시 변경작업 -> d
+(+)rplan-discount : 선택약정 할인, 고정, on/off (1 : 600000) -> e / 24 => {discount} x 왼쪽필드에서 처리
+(calc)rplan-mmonth : 월 통신요금 ( d - (e / 24) ) -> B => {mmonth}
+
+(calc)rplan-mtotal : 월 총 납부금액 ( A + B ) => {mtotal}
+
